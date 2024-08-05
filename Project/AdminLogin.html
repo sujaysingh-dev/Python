@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>BookBazar.Com</title>
+          <meta name="description" content="">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+     </head>
+     <style>
+          *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+          }
+          body{
+               height: auto;
+          }
+          section{
+               height: auto;
+          }
+          header{
+               padding: 0rem 2rem 0rem 2rem;
+          }
+          .header{
+               background-color: rgba(135, 130, 130, 0.523);
+               font-family:sans-serif;
+          }
+          .header1{
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: space-between;
+               height: 5rem;
+               border-bottom: 3px solid rgb(255, 255, 255);
+          }
+          .header1:hover{
+               border-bottom: 3px solid rgb(255, 0, 0);
+          }
+          .logo{
+               padding-top: 1.3rem;
+               font-size: 2rem;
+               color: white;
+               font-weight: bold;
+               cursor: pointer;
+          }
+          .logo1{
+               font-size: 2rem;
+               color: red;
+               text-decoration: underline;
+          }
+          ul{
+               padding-top: 2rem;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: .8rem;
+               display: flex;
+               list-style: none;
+          }
+          li{
+               margin-right: 1rem;
+          }
+          li a{
+               text-decoration: none;
+               color: rgb(44, 42, 42);
+          }
+          li a:hover{
+               color: rgb(250, 9, 9);
+               border-bottom: 2px solid red;
+               border-top: 2px solid red;
+               padding: .5rem 0rem .5rem 0rem;
+          }
+          .menu-icon img{
+               height: 40px;
+               width: 40px;
+               float: right;
+               display: none;
+               margin-top: -7px;
+          }
+          .menu-icon img:hover{
+               cursor: pointer;
+          }
+
+
+
+          .section1{
+               background-image: url(img/back1.gif);
+               background-size: cover;
+               background-position: center;
+               height: 87.3vh;
+          }
+          .section1-container{
+               height: 34.3rem;
+               padding: 2rem 4rem 2rem 4rem;
+               color: rgb(0, 0, 0);
+          }
+          .login {
+               margin: 5rem auto;
+               max-width: 500px;
+               padding: 15px;
+               border: 1px solid #ccc;
+               border-radius: 5px;
+               background-color: rgb(251, 251, 251);
+               box-shadow: 2px 6px 8px black;
+          }
+          h1{
+               text-align: center;
+               margin-top: -90px;
+          }
+          .login i{
+               font-size: 5rem;
+               color: rgb(248, 248, 248);
+               justify-content: space-around;
+               background-color: black;
+               padding: 2rem;
+               border: 2px solid rgb(255, 255, 255);
+               border-radius: 25%;
+               border-bottom: 2px solid red;
+          }
+          .error{
+               text-align: center;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: 1rem;
+          }
+          .form{
+               font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+               font-size: 1.6rem;
+               font-weight: 400;
+          }
+          .form input[type="text"],input[type="password"]{
+               font-size: 20px;
+               font-weight: bold;
+               width: 100%;
+               padding: 6px;
+               margin-bottom: 10px;
+               border: none;
+               border-bottom: 1px solid red;
+               outline: none;
+               background-color: transparent;
+          }
+          .btn{
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: space-between;
+          }
+          .btn input[type="submit"]{
+               padding: .4rem 1rem .4rem 1rem;
+               width: 100%;
+               border-radius: 5px;
+               font-size: 1rem;
+               font-weight: bold;
+               letter-spacing: 1px;
+               margin-top: -10px;
+          }
+          .btn input[type="submit"]:hover{
+               border-color: red;
+               cursor: pointer;
+          }
+          .create{
+               margin-top: 20px;
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: space-between;
+          }
+          .create a{
+               text-decoration: none;
+               font-size: 1.1rem;
+               color: black;
+               transition: 2s cubic-bezier(0.215, 0.610, 0.355, 1);
+          }
+          .create a:hover{
+               border-bottom: 1px solid black;
+          }
+
+          /* POP UP WINDOW CODING START */
+
+          .overLay1{
+               top: 0;
+               bottom: 0;
+               left: 0;
+               right: 0;
+               position: fixed;
+               background: rgba(0,0,0,0.8);
+               visibility: hidden;
+               opacity: 0;
+               font-family: Arial, Helvetica, sans-serif;
+          }
+          .overLay1:target{
+               visibility: visible;
+               opacity: 1;
+          }
+          .wrapper{
+               margin: 1% auto;
+               padding: 10px 30px 10px 30px;
+               background-color: #e7e7e7;
+               width: 40%;
+               position: relative;
+               transition: all 5s ease-in-out;
+          }
+          h2{
+               margin-top: 0;
+               color: #333;
+               text-align: center;
+          }
+          .wrapper .close{
+               position: relative;
+               top: -30px;
+               left: 98%;
+               transition: all 200ms;
+               font-size: 35px;
+               font-weight: bold;
+               text-decoration: none;
+               color: #333;
+          }
+          .wrapper .close:hover{
+               color: red;
+          }
+          .wrapper .content{
+               max-height: 30%;
+               overflow: auto;
+          }
+          /*   FORM DESING    */
+
+          .container{
+               border-radius: 5%;
+               background-color: #e7e7e7;
+               padding: 4% auto;
+          }
+          .container label{
+               letter-spacing: 1px;
+               font-weight: bold;
+          }
+          .container input[type="text"],input[type="date"],input[type="number"]{
+               width: 100%;
+               padding: .3rem;
+               border: none;
+               outline: none;
+               border-bottom: 1px solid red;
+               background-color: transparent;
+               font-size: 1rem;
+               font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
+          .hide{
+               margin: -6% 0% 0% 95%;
+          }
+          .hide i{
+               border: none;
+               font-size: 1rem;
+          }
+          .hide i:hover{
+               color: red;
+               cursor: pointer;
+          }
+          .container input[type="submit"]{
+               padding: .4rem 1rem .4rem 1rem;
+               width: 100%;
+               border-radius: 5px;
+               font-size: 1rem;
+               font-weight: bold;
+               letter-spacing: 1px;
+               margin-top: -10px;
+          }
+          .container input[type="submit"]:hover{
+               border: 1px solid red;
+               cursor: pointer;
+          }
+
+          /* POP UP WINDOW CODING START */
+
+          .overLay2{
+               top: 0;
+               bottom: 0;
+               left: 0;
+               right: 0;
+               position: fixed;
+               background: rgba(0,0,0,0.8);
+               visibility: hidden;
+               opacity: 0;
+               font-family: Arial, Helvetica, sans-serif;
+          }
+          .overLay2:target{
+               visibility: visible;
+               opacity: 1;
+          }
+          .wrapper1{
+               margin: 7% auto;
+               padding: 40px;
+               background-color: #e7e7e7;
+               width: 40%;
+               position: relative;
+               transition: all 5s ease-in-out;
+          }
+          h2{
+               margin-top: 0;
+               color: #333;
+               text-align: center;
+          }
+          .wrapper1 .close1{
+               position: relative;
+               top: -60px;
+               left: 99%;
+               transition: all 200ms;
+               font-size: 35px;
+               font-weight: bold;
+               text-decoration: none;
+               color: #333;
+          }
+          .wrapper1 .close1:hover{
+               color: red;
+          }
+          .wrapper1 .content1{
+               max-height: 30%;
+               overflow: auto;
+          }
+          /*   FORM DESING    */
+
+          .container1{
+               border-radius: 5%;
+               background-color: #e7e7e7;
+               padding: 4% auto;
+          }
+          .container1 label{
+               letter-spacing: 1px;
+          }
+          .container1 input[type="date"],input[type="number"],input[type="text"]{
+               width: 100%;
+               padding: .3rem;
+               border: none;
+               outline: none;
+               border-bottom: 1px solid red;
+               background-color: transparent;
+               font-size: 1rem;
+               font-family: Arial, Helvetica, sans-serif;
+          }
+          .container1 input[type="submit"]{
+               padding: .4rem 1rem .4rem 1rem;
+               width: 100%;
+               border-radius: 5px;
+               font-size: 1rem;
+               font-weight: bold;
+               letter-spacing: 1px;
+               margin-top: -10px;
+          }
+          .container1 input[type="submit"]:hover{
+               border: 1px solid red;
+               cursor: pointer;
+          }
+          span{
+               color: red;
+               font-size: 1.2rem;
+          }
+
+          @media(max-width:745px){
+               li{
+                    display: none;
+               }
+               .menu-icon img{
+                    display: block;
+               }
+          }
+
+     </style>
+
+     <body>
+     
+          <header class="header">
+               <div class="header1">
+                    <div class="logo"><span class="logo1">B</span>ook<span class="logo1">B</span>azzar</div>
+                    <div class="menu">
+                         <ul>
+                              <li><a href="Index.html">Home</a></li>
+                              <li><a href="Index.html">Facility</a></li>
+                              <li><a href="Index.html">Services</a></li>
+                              <li><a href="Index.html">Admin Pannel</a></li>
+                              <li><a href="Index.html">Contact Us</a></li>
+                         </ul>
+                         <div class="menu-icon"><img src="img/menu1.png"></div>
+                    </div>
+               </div>
+          </header>
+
+
+          <form name="f" action="adminlogin.py" method="post">
+          <section class="section1">
+               <div class="section1-container">
+                    <div class="login">
+                         <h1><i class="fa-solid fa-user"></i></h1>
+                         <div class="form">
+                              <label>UserName</label><br>
+                              <input type="text" name="t1" required><br>
+                              <label>Password</label><br>
+                              <input type="password" name="t2" required><br><br>
+                         </div>
+                         <div class="btn">
+                              <input type="submit" name="b" value="Login">
+                         </div>
+                         <div class="create">
+                              <a href="#Create" class="button1">Create Account</a>
+                              <a href="#Forget" class="button2">Forget Password</a>
+                         </div>
+                    </div>
+               </div>
+          </section>
+          </form>
+
+          <!-------Home Page Ends-------------->
+
+          <form name="f" action="adminlogin.py" method="post">
+          <div class="overLay2" id="Create">
+               <div class="wrapper1">
+                    <h2>Use Admin Authentication For Create Another User And Password</h2>
+                    <a href="" class="close1">&times;</a>
+                    <div class="content1">
+                         <div class="container1">
+                              <label>Admin User Id<span>*</span></label>
+                              <input type="text" name="t14" required><br><br>
+                              <label>Admin Password<span>*</span></label>
+                              <input type="password" name="t15" required><br><br>
+
+                              <input type="submit" name="b1" value="Next">
+                         </div>
+                    </div>
+               </div>
+          </div>
+          </form>
+
+
+          <form name="f" action="adminlogin.py" method="post">
+          <div class="overLay1" id="Create1">
+               <div class="wrapper">
+                    <h2>Please Fill Your Details</h2>
+                    <a href="" class="close">&times;</a>
+                    <div class="content">
+                         <div class="container">
+                              <label>Full Name</label>
+                              <input type="text" name="t3" required onkeypress="return allowOnlyLetters(event)"><br><br>
+                              <label>Gender</label><br>
+                              <input type="text" name="t4" required onkeypress="return allowOnlyLetters(event)"><br><br>
+                              <label>Date Of Birth</label>
+                              <input type="date" name="t5" required><br><br>
+                              <label>Mobile Number</label>
+                              <input type="number" name="t6" placeholder="XXXXXXXXXXX" required onkeypress="return allowOnlyNumbers(event)"><br><br>
+                              <label>User Id</label>
+                              <input type="text" name="t7" placeholder="User ID" required><br><br>
+                              <label>Password</label>
+                              <input type="text" name="t8" class="Pass" required><div class="hide"><i class="fa-regular fa-eye-slash" onclick="click1()"></i></div><br><br>
+                              <label>Confirm Password</label>
+                              <input type="text" name="t9" class="Pass" required><div class="hide"><i class="fa-regular fa-eye-slash" onclick="click2()"></i></div><br><br>
+
+                              <input type="submit" name="b2" value="Create">
+                         </div>
+                    </div>
+               </div>
+          </div>
+          </form>
+          <form name="f" action="adminlogin.py" method="post">
+          <div class="overLay2" id="Forget">
+               <div class="wrapper1">
+                    <h2>Please Fill Both Details For Reset Password</h2>
+                    <a href="" class="close1">&times;</a>
+                    <div class="content1">
+                         <div class="container1">
+                              <label>Date Of Birth<span>*</span></label>
+                              <input type="date" name="t10" required><br><br>
+                              <label>Mobile Number<span>*</span></label>
+                              <input type="number" name="t11" requiredonkeypress="return allowOnlyNumbers(event)"><br><br>
+                              <label>New Password<span>*</span></label>
+                              <input type="text" name="t12" required><br><br>
+                              <label>Confirm Password<span>*</span></label>
+                              <input type="text" name="t13" required><br><br>
+
+                              <input type="submit" name="b3" value="Submit">
+                         </div>
+                    </div>
+               </div>
+          </div>
+          </form>
+          
+     </body>
+<script>
+          function allowOnlyLetters(e)   
+                    {    
+                         var charCode = window.event.keyCode;    
+                         if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32))    
+                              return true;    
+                         else  
+                         {    
+                              alert('Please enter only alphabets');    
+                              return false;    
+                         }           
+                    }    
+        
+        
+          function allowonlysingledot(e,t)
+                  {		
+                         var charCode = window.event.keyCode;   
+                               //alert(charCode)
+                         if((charCode > 47 && charCode < 58))
+                              return true;    
+                         else  
+                         {    
+                              if(charCode==46 && t.value.indexOf('.')==-1)
+                                   return true
+                              else if (charCode==46 && t.value.indexOf('.')==0)
+                                   return false
+                         else
+                         {
+                              //alert('Please enter only numbers...');  
+                              return false;   
+                         } 
+                    }         
+               } 
+        
+        
+          function allowOnlyNumbers(e,t)   
+               {                   
+                    var charCode = window.event.keyCode;                              
+                    if((charCode > 47 && charCode < 58))
+                         return true;    
+                    else  
+                    {    
+                         alert('Please enter only numbers...');  
+                         return false;   
+                    }         
+               }    
+</script>
+</html>
+
+

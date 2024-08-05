@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Form Example</title>
+</head>
+<style>
+body
+{
+  font-family: Arial, sans-serif;
+  margin: 5px;
+  padding: 0;
+  background-color: lightgray;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgb(237, 238, 210);
+}
+
+label {
+     font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],input[type=date]{
+  font-size: 18px;
+  font-weight: bold;
+  width: 96%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type=button],input[type=submit],input[type=reset]{
+  background-color: #af9fb397;
+  color: #000000;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input[type=button]:hover,input[type=submit]:hover {
+  background-color: #5f5f5f;
+}
+
+@media screen and (max-width: 768px) {
+  form {
+    padding: 10px;
+  }
+}
+
+</style>
+<body>
+
+<h1>EMPLOYEES</h1>
+
+<form name="f" method="POST" action="employees.py">
+     <label>Employee ID </label>
+     <input type="text" name="t1">
+     <label>Fist Name</label>
+     <input type="text" name="t2" onkeypress="return allowOnlyLetters(event)">
+     <label>Last Name</label>
+     <input type="text" name="t3" onkeypress="return allowOnlyLetters(event)">
+     <label>Email</label>
+     <input type="text" name="t4">
+     <label>Phone</label>
+     <input type="text" name="t5" onkeypress='return allowOnlyNumbers(event,t3)'>
+     <label>Hire Date</label>
+     <input type="date" name="t6">
+     <label>Manager ID</label>
+     <input type="text" name="t7">
+     <label>Job Title</label>
+     <input type="text" name="t8" onkeypress="return allowOnlyLetters(event)">
+
+
+     <input type="reset" name="b" value="New">
+     <input type="submit" name="b" value="Save">
+     <input type="submit" name="b" value="Update">
+     <input type="submit" name="b" value="Delete">
+     <input type="submit" name="b" value="AllSearch">
+     <input type="submit" name="b" value="PSearch">
+     <input type="button" onclick="menu()" value="Home">
+     <input type="button" onclick="exit()" value="Exit">
+</form>
+
+</body>
+<script>
+
+function menu(){
+    window.open("Menu.html","_self");
+  }
+  function exit(){
+    window.close();
+  }
+
+
+  function allowOnlyLetters(e)   
+		{    
+			   
+			  var charCode = window.event.keyCode;    
+			   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32))    
+					   return true;    
+			   else  
+			   {    
+					  alert('Please enter only alphabets');    
+					  return false;    
+			   }           
+		}    
+
+
+	function allowonlysingledot(e,t)
+		{		
+			 var charCode = window.event.keyCode;   
+				   //alert(charCode)
+			
+			   
+			if((charCode > 47 && charCode < 58))
+				   return true;    
+			   else  
+			   {    
+				if(charCode==46 && t.value.indexOf('.')==-1)
+					return true
+				else if (charCode==46 && t.value.indexOf('.')==0)
+					return false
+				else
+				{
+					  //alert('Please enter only numbers...');  
+					  return false;   
+				} 
+			   }         
+		   } 
+
+
+		function allowOnlyNumbers(e,t)   
+		{    
+				  
+			var charCode = window.event.keyCode;   
+							
+			if((charCode > 47 && charCode < 58))
+				   return true;    
+			   else  
+			   {    
+					alert('Please enter only numbers...');  
+					  return false;   
+				 
+			   }         
+		}    
+</script>
+</html>

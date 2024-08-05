@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title>BookBazar.Com</title>
+     <meta name="description" content="">
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+     <header class="header">
+          <div class="header1">
+               <div class="logo"><span class="logo1">B</span>ook<span class="logo1">B</span>azzar</div>
+               <div class="darkLight">Dark</div>
+               <div class="menu">
+                    <ul>
+                         <li><a href="Index.html">Home</a></li>
+                         <li><a href="Index.html">Facility</a></li>
+                         <li><a href="Index.html">Services</a></li>
+                         <li><a href="AdminLogin.html">Admin Pannel</a></li>
+                         <li><a href="Index.html">Contact Us</a></li>
+                    </ul>
+                    <div class="toggle_btn" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
+               </div>
+          </div>
+     </header>
+     
+     <div class="home-container">
+          <div class="text-container">
+               <div class="text">
+                    Grow up your skills<br>
+                    <span class="spantext">Programming Language....!</span>
+                    <p>Create Your Future With Us.</p>
+                    <div class="description"><span class="spantext1">T</span>he Best Coputer Institute in Patna. And It's Certified By Indian Government In Any Types Of Courses In Computer, The Most Student Join Our Institute For Create Skills In Programming Language, Diffrent Types Of Courses Are Available Here Your Need To Join For Your Best Carrier.....</div>
+                    <a href="#joinus" class="button1">Join Us</a>
+               </div>
+               <div class="image">
+                    <img src="img/student.png" alt="">
+               </div>
+               <form name="f" action="joinus.py" method="post">
+                    <div class="overLay2" id="joinus">
+                         <div class="wrapper1">
+                              <h2>Please Fill Your Details</h2>
+                              <a href="" class="close1">&times;</a>
+                              <div class="content1">
+                                   <div class="container1">
+                                        <label>Full Name<span>*</span></label>
+                                        <input type="text" name="t1" required onkeypress="return allowOnlyLetters(event)"><br><br>
+                                        <label>Mobile Number<span>*</span></label>
+                                        <input type="text" name="t2" required onkeypress="return  allowOnlyNumbers(event,t2)" onblur="tendigit()"><br><br>
+                                        <label>Course<span>*</span></label>
+                                        <input type="text" name="t3" required onkeypress="return allowOnlyLetters(event)"><br><br>
+                                        
+                                        <input type="submit" name="b" value="Submit">
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </form>
+          </div>
+     </div>
+
+     <div class="facility">
+          <center>This Software Is Created By Sujay Singh</center>
+     </div>
+</body>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+     var darkLight = document.querySelector(".darkLight");
+     var body1 = document.querySelector("body");
+     var header = document.querySelector(".header");
+     var icon = document.querySelector(".toggle_btn i");
+     flag = 0;
+     darkLight.addEventListener("click",function(){
+          if(flag == 0)
+          {
+               body1.style.backgroundColor = "black";
+               body1.style.color = "white";
+               header.style.backgroundColor = "black";
+               icon.style.color = "blue";
+               darkLight.innerHTML = "Light";
+               flag = 1;
+          }
+          else
+          {
+               body1.style.backgroundColor = "white";
+               header.style.backgroundColor = "white";
+               body1.style.color = "black";
+               darkLight.innerHTML = "Dark";
+               flag = 0;
+          }
+     });
+
+     var body = querySelector("body")
+
+     gsap.from("body",{
+          y:"100vh",
+          duration:2,
+          delay:1
+     })
+     
+</script>
+
+<script>
+     function allowOnlyLetters(e)   
+             {    
+                     
+                    var charCode = window.event.keyCode;    
+                     if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32))    
+                               return true;    
+                     else  
+                     {    
+                              alert('Please enter only alphabets');    
+                              return false;    
+                     }           
+             }    
+   
+   
+     function allowonlysingledot(e,t)
+             {		
+                   var charCode = window.event.keyCode;   
+                          //alert(charCode)
+                  
+                     
+                  if((charCode > 47 && charCode < 58))
+                          return true;    
+                     else  
+                     {    
+                       if(charCode==46 && t.value.indexOf('.')==-1)
+                            return true
+                       else if (charCode==46 && t.value.indexOf('.')==0)
+                            return false
+                       else
+                       {
+                              //alert('Please enter only numbers...');  
+                              return false;   
+                       } 
+                     }         
+                } 
+   
+   
+     function allowOnlyNumbers(e,t)   
+             {    
+                         
+                  var charCode = window.event.keyCode;   
+
+                                              
+                  if((charCode > 47 && charCode < 58))
+                          return true;    
+                     else  
+                     {    
+                            alert('Please enter only numbers...');  
+                              return false;   
+                        
+                     }         
+             }    
+     function tendigit()
+     {
+          var k=(f.t2.value.length)
+          if(k!=10)
+          {
+               alert("Mobile ")
+               f.t2.value=""
+          }
+     }
+</script>
+
+</html>
